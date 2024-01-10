@@ -6,15 +6,37 @@
     <title>Document</title>
     <link rel="stylesheet" href="./css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-</head>
-<body>
-    <nav class="nav">
+    <script>
+        async function ch(){
+            
+            const res=await axios.get("/check/")
+            if(res.data==='yes'){
+                document.getElementById('main_container').innerHTML=`<nav class="nav">
         <p>Welcome This is Home Page</p>
     </nav>
-
     <div class="log">
         <button onClick="logOut()">LogOut</button>
+    </div>`
+            }else{
+                document.getElementById('main_container').innerHTML=` <nav class="nav">
+        <p>---------------Sorry You Are Not Logged In---------------</p>
+    </nav>
+    <div class="textt"><p> You have to login first for using the application</p></div>
+    
+    <div class="log">
+        <button><a href="/">LogIn</a></button>
+    </div>`
+            }
+        }
+        ch();
+    </script>
+</head>
+<body>
+    <div id="main_container">
+
     </div>
+   
+
     <script src="./js/main.js"></script>
 </body>
 </html>

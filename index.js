@@ -84,10 +84,10 @@ server.post('/login',passport.authenticate('local'), userController.loginUser)
       .get('/check',(req,res)=>{
         if(req.user){
           console.log("user hai bro")
-          res.json("user hai Bro")
+          res.json("yes")
         }else{
           console.log("No user Bro")
-          res.json("No user Bro")
+          res.json("no")
         }
       })
 
