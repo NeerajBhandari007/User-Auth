@@ -10,7 +10,7 @@ const session =require("express-session")
 const LocalStrategy=require("passport-local").Strategy;
 const model=require("./model/user")
 const User=model.user;
-
+const path = require("path");
 
 
 server.use(express.json());
@@ -71,8 +71,8 @@ passport.deserializeUser(function (user, cb) {
   });
 });
 
-
-server.use(express.static('public'));
+server.use(express.static(path.resolve(__dirname, "public")));
+// server.use(express.static('public'));
 server.post('/login',passport.authenticate('local'), userController.loginUser)
       .post('/logout',function logout(req,res){
         req.logout(function(err) {
