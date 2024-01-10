@@ -35,8 +35,8 @@ server.use(passport.session());
 
 passport.use(new LocalStrategy({ usernameField: "user" },
     async function(user, password, done) {
-      //console.log("entered strategy");
-      //console.log({user, password});
+      console.log("entered strategy");
+      console.log({user, password});
       try{
         const userexist =await User.findOne({user:user});
         
@@ -55,8 +55,8 @@ passport.use(new LocalStrategy({ usernameField: "user" },
 
 
 passport.serializeUser(function (user, cb) {
-  //console.log("serialize");
-  //console.log(user);
+  console.log("serialize");
+  console.log(user);
 
   process.nextTick(function () {
     return cb(null, {user});
@@ -64,8 +64,8 @@ passport.serializeUser(function (user, cb) {
 });
 
 passport.deserializeUser(function (user, cb) {
-  //console.log("deserialize");
-  //console.log(user);
+  console.log("deserialize");
+  console.log(user);
   process.nextTick(function () {
     return cb(null, {user});
   });
@@ -79,14 +79,14 @@ server.post('/login',passport.authenticate('local'), userController.loginUser)
           if (err) { return next(err); }
           res.json("logged out sucessfully");
         });
-        //console.log("logged out sucessfully")
+        console.log("logged out sucessfully")
       })
       .get('/check',(req,res)=>{
         if(req.user){
-          //console.log("user hai bro")
+          console.log("user hai bro")
           res.json("user hai Bro")
         }else{
-          //console.log("No user Bro")
+          console.log("No user Bro")
           res.json("No user Bro")
         }
       })
@@ -99,7 +99,7 @@ server.use('/userInfo',userInforouter.router);
 
 
 main().catch((err)=>{
-  //console.log(err);
+  console.log(err);
 })
 async function main(){
   await mongoose.connect(process.env.MONGODB_URL);

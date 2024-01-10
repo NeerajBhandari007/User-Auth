@@ -8,7 +8,7 @@ async function sendData(){
     }
     try{
         const res=await axios.post("/login",obj)
-        //console.log(res.data);
+        console.log(res.data);
         window.location.replace("/Home.html")
     }catch(err){
         alert("wrong credentials")
@@ -27,9 +27,9 @@ async function createUser(){
         try{
             const res=await axios.post("/users/",obj)
             window.location.replace("/")
-            //console.log(res.data);
+            console.log(res.data);
         }catch(err){
-            //console.log(err)
+            console.log(err)
         }
     }else{
         alert("password not matching")
@@ -40,10 +40,10 @@ async function createUser(){
 async function logOut(){
     try{
         const res=await axios.post("/logout")
-        //console.log(res.data);
+        console.log(res.data);
         window.location.replace("/")
     }catch(err){
-        //console.log(err);
+        console.log(err);
     }
 }
 
@@ -64,11 +64,11 @@ async function createMessage(){
     }
     try{
         const res=await axios.post("/userInfo",obj)
-        //console.log(res.data);
+        console.log(res.data);
         location.reload();
         alert("Message Submitted Our Team will Contact You")
 
     }catch(err){
-        //console.log(err);
+        console.log(err);
     }
 }

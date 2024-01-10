@@ -19,7 +19,7 @@ exports.createUser = (req, res) => {
   
   
   exports.loginUser=(req,res)=>{
-    //console.log("login sucessfull")
+    console.log("login sucessfull")
     res.json(req.user);
   }
 
