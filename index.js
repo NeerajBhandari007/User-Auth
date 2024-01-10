@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express=require('express');
 const server=express();
 const userController=require("./controller/user")
@@ -101,8 +102,8 @@ main().catch((err)=>{
   //console.log(err);
 })
 async function main(){
-  await mongoose.connect(`mongodb+srv://vaibhavpant91:q3FY5FVrJddONQdh@cluster0.dlgvork.mongodb.net/user?retryWrites=true&w=majority`);
-  //console.log('database connected')
+  await mongoose.connect(process.env.MONGODB_URL);
+  console.log('database connected')
 }
 
 server.get("/", (req, res) => {
@@ -112,7 +113,7 @@ server.get("/", (req, res) => {
     
 
 
-server.listen(8080,()=>[
-    //console.log("server started")
-])
+server.listen(process.env.PORT,()=>{
+    console.log("server started")
+})
 
