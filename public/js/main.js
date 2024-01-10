@@ -65,9 +65,8 @@ async function createMessage(){
     try{
         const res=await axios.post("/userInfo",obj)
         console.log(res.data);
-        location.reload();
         alert("Message Submitted Our Team will Contact You")
-
+        location.reload();
     }catch(err){
         console.log(err);
     }
